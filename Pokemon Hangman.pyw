@@ -3,8 +3,6 @@ from PokemonNames import words
 from tkinter import *
 
 
-#work on Guess
-
 canvas = Tk()
 canvas.title("Hangman")
 canvas.geometry("340x230")
@@ -76,17 +74,21 @@ def Get2(event):
     c = Guess.get()
     Submit(c)
     Guess.delete(0, END)
-    
+
 
 def Cont():
     global name, nameL, lList, lives, guess2
-    guess2 = ' '
-    lives = 7
-    Name()
-    Hello.config(text = hello)
-    Hello2.config(text = try1)
-    Hello3.config(text = lList)
-    Lives.config(text = f'Lives: {lives}')
+    if '*' in lList and lives >0:
+        Hello.config(text = 'Please finish guessing the current Pokemon.')
+        Hello2.config(text = 'Or press Quit to exit')
+    else:
+        guess2 = ' '
+        lives = 7
+        Name()
+        Hello.config(text = hello)
+        Hello2.config(text = try1)
+        Hello3.config(text = lList)
+        Lives.config(text = f'Lives: {lives}')
 
 
 def Congrats():

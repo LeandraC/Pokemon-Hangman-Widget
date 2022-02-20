@@ -106,7 +106,7 @@ for a in range(3):
         except:
             pass
 
-Button(frame, text = "Quit", font = meh, anchor = 'center', command = lambda: sys.exit(), width = 5, bg="#EE4B2B").grid(column=12, row = 9, columnspan = 10)
+Button(frame, text = "Quit", font = meh, anchor = 'center', command = lambda: quit(), width = 5, bg="#EE4B2B").grid(column=12, row = 9, columnspan = 10)
 Button(frame, text = "Continue", font = meh, anchor = 'center', command = lambda: Cont(), width = 9, bg = "teal").grid(column=8, row = 9, columnspan = 10)
 Button(frame, text = "Submit", bg = "green", font = meh, justify = 'center', command = lambda: Get()).grid(row =9, column = 6, columnspan=5)
 canvas.bind('<Return>', Get2)

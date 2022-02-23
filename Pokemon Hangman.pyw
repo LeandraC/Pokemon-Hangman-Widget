@@ -19,6 +19,7 @@ meh = ("Sans Serif", 8, "bold")
 
 
 guess2 = ''
+guess3= ''
 guess = StringVar()
 Guess = Entry(frame, textvariable = guess, justify = 'center', bg= "white", font = meh)
 Guess.grid(column = 7, sticky = 'news', columnspan = 5, row = 8)
@@ -27,9 +28,9 @@ nameL=[]
 lList=[]
 score = 0
 try1= 'Press any letter to guess\nor type a letter and hit submit'
-Hello = Label(frame, text = hello,  wraplength=0)
+Hello = Label(frame, text = hello,  wraplength= 500)
 Hello.grid(column = 5, columnspan = 10, row = 0, rowspan = 2)
-Hello2 = Label(frame, text = try1, wraplength=0)
+Hello2 = Label(frame, text = try1, wraplength= 500)
 Hello2.grid(column = 5, columnspan = 10, row = 4, rowspan = 3)
 Hello3 = Label(frame, text = lList)
 Hello3.grid(column=5, columnspan=10, row = 7)
@@ -47,20 +48,20 @@ def Name():
 
 def Submit(c):
     c = c.upper()
-    global guess2, lives, name, nameL, lList,score
+    global guess2, guess3, lives, name, nameL, lList,score
     if lives >0:
         if c in guess2:
             Hello.config(text= f'You have already guessed {c}.\nPlease select another letter.')
         if c not in guess2:
             if len(c) >=2:
-                pass
+                guess3 = c
             if len(c) == 1:
                 guess2 += c
-            Hello.config(text = f'You have guessed the letters\n')
+            Hello.config(text = f'You have guessed the letters\n{guess2}')
             if c not in name:
                 lives -= 1
     lList = [letter if letter in guess2 else '*' for letter in name]
-    Hello2.config(text = f'{guess2}\n')
+    Hello2.config(text = f'You have guessed the word\n{guess3}', wraplength=0)
     Hello3.config(text = lList)
     Lives.config(text = f'Lives: {lives}')
     if set(lList) == nameL:
@@ -88,6 +89,7 @@ def Cont():
         Hello2.config(text = 'Or press Quit to exit')
     else:
         guess2 = ' '
+        guess3 = ' '
         lives = 7
         Name()
         Hello.config(text = hello)

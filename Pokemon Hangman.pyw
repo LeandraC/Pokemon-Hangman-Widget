@@ -1,7 +1,9 @@
-import string, random, time
+import string, random, time, sys
 from PokemonNames import words
 from tkinter import *
 
+
+#work on Guess
 
 canvas = Tk()
 canvas.title("Hangman")
@@ -50,7 +52,10 @@ def Submit(c):
         if c in guess2:
             Hello.config(text= f'You have already guessed {c}.\nPlease select another letter.')
         if c not in guess2:
-            guess2 += c
+            if len(c) >=2:
+                pass
+            if len(c) == 1:
+                guess2 += c
             Hello.config(text = f'You have guessed the letters\n')
             if c not in name:
                 lives -= 1
